@@ -15,7 +15,7 @@ public class HomePage extends BasePage
 		public HomePage(WebDriver driver)
 		{
 			super(driver);
-			visit("https://the-internet.herokuapp.com/");
+			visit();
 			PageFactory.initElements(driver,this);
 		}
 		public String getHeadingOfPage()
