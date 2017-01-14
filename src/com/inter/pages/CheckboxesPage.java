@@ -23,7 +23,7 @@ public class CheckboxesPage extends BasePage
 	public CheckboxesPage(WebDriver driver)
 	{
 		super(driver);
-		visit("https://the-internet.herokuapp.com/checkboxes");
+		visit("checkboxes");
 		PageFactory.initElements(driver,this);
 	}
 	public boolean getCheckbox1Status()
