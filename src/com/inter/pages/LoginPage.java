@@ -21,8 +21,8 @@ public class LoginPage extends BasePage
 	}
 	public void with(String username,String password)
 	{
-		enter(username,usernameLocator);
-		enter(password,passwordLocator);
+		enter(usernameLocator,username);
+		enter(passwordLocator,password);
 		clickOn(loginButton);
 	}
 	public boolean successMessagePresent()
