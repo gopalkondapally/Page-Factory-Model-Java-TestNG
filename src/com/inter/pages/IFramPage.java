@@ -20,7 +20,7 @@ public class IFramPage extends BasePage
 	public IFramPage(WebDriver driver)
 	{
 		super(driver);
-		visit("https://the-internet.herokuapp.com/iframe");
+		visit("iframe");
 		PageFactory.initElements(driver,this);
 	}
 	
