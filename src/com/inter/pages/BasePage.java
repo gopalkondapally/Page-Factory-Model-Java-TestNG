@@ -10,62 +10,74 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage 
 {
 	public WebDriver driver;
+	String BASE_URL="https://the-internet.herokuapp.com/";
 	
-	//Constructor initializes the driver
+	//Constructor which initializes the driver
 	public BasePage(WebDriver driver)
 	{
 		this.driver = driver;
 	}
 	
-	//Navigates to the website given in the url
-	public void visit(String url)
+	public void visit()
 	{
-		driver.get(url);
+		driver.get(BASE_URL);
 	}
 	
-	/*Takes a By instance
-	 * returns a WebElement 
-	 * */
+	//Navigates to the web site given of the URL
+	public void visit(String url)
+	{
+		driver.get(BASE_URL+url);
+	}
+	
+	// Finds the elements
 	public WebElement find(By locator)
 	{
 		waitfor(locator);
 		return driver.findElement(locator);
 	}
 	
-	/*Takes a By locator
-	 * Calls find method and receives a WebElement element
-	 * clicks on the WebElement
-	 * */
+	// Returns title of the 
+	public String title()
+	{
+		return driver.getTitle();
+	}
+	
+	//Clicks on an element
 	public void clickOn(By locator)
 	{
 		find(locator).click();
     }
 	
-	/* This method is used to enter text when Page has locators
-	  */
-	public void enter(String inputText,By locator)
+	//Clicks on an element
+	public void clickOn(WebElement ele)
+	{
+		ele.click();
+	}
+	
+	// This method is used to enter text when locators are passed
+	public void enter(By locator,String inputText)
 	{
 		find(locator).sendKeys(inputText);
 	}
 	
-	/*This method is used to enter text when Page has Webelements*/
+	/*This method is used to enter text when web elements are passed*/
 	public void enter(WebElement ele,String inputText)
 	{
 		clear(ele);
 		ele.sendKeys(inputText);
 	}
 	
-	/*This method is used to clear the text in an element*/
+	//Clears the text of an element
 	public void clear(WebElement ele)
 	{
 		ele.clear();
 	}
 	
 	// Returns heading of the page
-	public String getHeading(WebElement element)
+	public String getHeading(WebElement ele)
 	{
-		System.out.println(element.getText().toString());
-		return element.getText().toString();
+		System.out.println(ele.getText().toString());
+		return ele.getText().toString();
 	}
 	
 	// Returns a boolean value based on whether element is present or not
@@ -80,10 +92,18 @@ public class BasePage
 			return false;
 		}
 	}
+	
+	//This method is used to wait for the for the element, default wait time is 10 seconds
 	public void waitfor(By locator)
 	{
 		WebDriverWait wait = new WebDriverWait(driver,10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		
+	}
+	
+	// Returns an Web Element text
+	public String getText(WebElement ele)
+	{
+		return ele.getText();
 	}
 }
