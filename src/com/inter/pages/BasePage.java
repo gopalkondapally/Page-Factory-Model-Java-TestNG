@@ -49,7 +49,7 @@ public class BasePage
 	public void clickOn(By locator)
 	{
 		find(locator).click();
-    }
+        }
 	
 	// Clicks on an element using the element
 	public void clickOn(WebElement ele)
