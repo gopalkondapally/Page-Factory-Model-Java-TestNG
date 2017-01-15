@@ -22,29 +22,35 @@ public class FrameTest
 		System.setProperty("webdriver.chrome.driver", exepath);
 		driver = new ChromeDriver();
 	}
-	
+
+	@AfterTest
+	public void tearDown()
+	{
+		driver.close();
+	}
+
 	@Test(priority = 0)
 	public void HeadingTest()
 	{
 		IFramPage iframePage = new IFramPage(driver);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		String heading= iframePage.getHeadingOfPage();
+		String heading= iframePage.getPageHeader();
 		//System.out.println(heading);
 		Assert.assertEquals(heading, "An iFrame containing the TinyMCE WYSIWYG Editor");
 	}
 	
-	@Test(priority = 1)
+	@Test(dependsOnMethods="HeadingTest")
 	public void TextInFieldTest()
 	{
 		IFramPage iframePage = new IFramPage(driver);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		iframePage.switchToFrame();
-		iframePage.enterText("The dude abides");
+		iframePage.enterText("Hello World");
 		String textInField = iframePage.getTextInField();
-		Assert.assertEquals(textInField, "The dude abides");
+		Assert.assertEquals(textInField, "Hello World");
 	}
 	
-	@Test(priority = 2)
+	@Test(dependsOnMethods="TextInFieldTest")
 	public void DefaultContentTest()
 	{
 		IFramPage iframePage = new IFramPage(driver);
@@ -52,14 +58,7 @@ public class FrameTest
 		iframePage.switchToFrame();
 		iframePage.enterText("The dude abides");
 		iframePage.switchToDefaultContent();
-		String heading= iframePage.getHeadingOfPage();
+		String heading= iframePage.getPageHeader();
 		Assert.assertEquals(heading, "An iFrame containing the TinyMCE WYSIWYG Editor");
-	}
-	
-	@AfterTest
-	public void tearDown()
-	{
-		driver.close();
-	}
-
+	}	
 }

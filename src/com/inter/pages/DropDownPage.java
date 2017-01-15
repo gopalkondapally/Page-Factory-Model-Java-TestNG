@@ -12,14 +12,16 @@ public class DropDownPage extends BasePage
 	@FindBy(how = How.ID, using ="dropdown")
 	public WebElement dropdownList;
 	
-	@FindBy(how =How.TAG_NAME, using ="h3")
-	public WebElement heading;
-	
 	public DropDownPage(WebDriver driver)
 	{
 		super(driver);
 		visit("dropdown");
 		PageFactory.initElements(driver,this);
+	}
+	
+	public String getPageHeader() 
+	{
+		return getHeading();
 	}
 	
 	/* Creating a method which returns an Select object
@@ -28,9 +30,10 @@ public class DropDownPage extends BasePage
 	{
 		return new Select(dropdownList);
 	}
-	public String getHeadingOfPage()
+	
+	public String getPagerHeader() 
 	{
-		return getHeading(heading);
+		return getHeading();
 	}
 	
 	public void selectOptionByValue(int value)

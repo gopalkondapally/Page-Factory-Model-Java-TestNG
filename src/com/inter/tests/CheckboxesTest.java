@@ -23,12 +23,18 @@ public class CheckboxesTest
 		driver = new ChromeDriver();
 	}
 	
+	@AfterTest
+	public void tearDown()
+	{
+		driver.close();
+	}
+	
 	@Test(priority = 0)
 	public void HeadingTest()
 	{
 		CheckboxesPage chboxPage = new CheckboxesPage(driver);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		String pageHeading= chboxPage.getHeadingOfPage();
+		String pageHeading= chboxPage.getPageHeader();
 		Assert.assertEquals(pageHeading, "Checkboxes");
 	}
 	
@@ -54,10 +60,5 @@ public class CheckboxesTest
 			chboxPage.selectcheckbox(2);
 		}
 		Assert.assertTrue(chboxPage.getCheckbox2Status(), "CheckBox 1 is not selected");
-	}
-	@AfterTest
-	public void tearDown()
-	{
-		driver.close();
 	}
 }

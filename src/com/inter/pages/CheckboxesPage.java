@@ -17,23 +17,28 @@ public class CheckboxesPage extends BasePage
 	@FindBy(how=How.XPATH, using=".//*[@id='checkboxes']/input[2]")
 	public WebElement checkbox2;
 	
-	@FindBy(how=How.TAG_NAME, using ="h3")
-	public WebElement heading;
-	
 	public CheckboxesPage(WebDriver driver)
 	{
 		super(driver);
 		visit("checkboxes");
 		PageFactory.initElements(driver,this);
 	}
+	
+	public String getPageHeader() 
+	{
+		return getHeading();
+	}
+	
 	public boolean getCheckbox1Status()
 	{
 		return checkbox1.isSelected();
 	}
+	
 	public boolean getCheckbox2Status()
 	{
 		return checkbox2.isSelected();
 	}
+	
 	public void selectcheckbox(int n)
 	{
 		if(n==1)
@@ -55,8 +60,5 @@ public class CheckboxesPage extends BasePage
 		{
 			checkbox2.click();
 		}
-	}
-	public String getHeadingOfPage() {
-		return getHeading(heading);
 	}
 }

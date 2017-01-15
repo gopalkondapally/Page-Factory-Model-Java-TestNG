@@ -12,8 +12,8 @@ import com.inter.pages.*;
 
 public class InternetTest 
 {
-	 WebDriver driver;
-	 String exepath = "E:\\softwares\\chromedriver.exe";
+	WebDriver driver;
+	String exepath = "E:\\softwares\\chromedriver.exe";
 	
 	@BeforeTest
 	public void setUp()
@@ -21,18 +21,20 @@ public class InternetTest
 		System.setProperty("webdriver.chrome.driver", exepath);
 		driver = new ChromeDriver();
 	}
-	@Test
-	public void HomepageLoadTest()
-	{
-		HomePage homepage= new HomePage(driver);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		String heading= homepage.getHeadingOfPage();
-		//System.out.println(heading);
-		Assert.assertEquals(heading, "Welcome to the Internet");
-}
+	
 	@AfterTest
 	public void tearDown()
 	{
 		driver.close();
 	}
+	
+	@Test
+	public void HomepageLoadTest()
+	{
+		HomePage homepage= new HomePage(driver);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		String heading= homepage.getPageHeader();
+		//System.out.println(heading);
+		Assert.assertEquals(heading, "Welcome to the Internet");
+    }
 }
