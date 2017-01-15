@@ -20,12 +20,18 @@ public class DropDownTest
 		System.setProperty("webdriver.chrome.driver", exepath);
 		driver = new ChromeDriver();
 	}
+
+	@AfterTest
+	public void tearDown()
+	{
+		driver.close();
+	}
 	
 	@Test
 	public void PageHeadingTest()
 	{
 		DropDownPage ddPage = new DropDownPage(driver);
-		Assert.assertEquals(ddPage.getHeadingOfPage(), "Dropdown List");
+		Assert.assertEquals(ddPage.getPageHeader(), "Dropdown List");
 	}
 	
 	@Test(dependsOnMethods="PageHeadingTest")
@@ -34,11 +40,5 @@ public class DropDownTest
 		DropDownPage ddPage = new DropDownPage(driver);
 		ddPage.selectOptionByValue(1);
 		Assert.assertEquals(ddPage.getSelectedOption(), "Option 1");
-	}
-	
-	@AfterTest
-	public void tearDown()
-	{
-		driver.close();
 	}
 }

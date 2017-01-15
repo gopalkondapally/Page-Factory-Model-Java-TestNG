@@ -14,9 +14,6 @@ public class IFramPage extends BasePage
 	@FindBy(how =How.ID, using = "tinymce")
 	public WebElement textfield;
 	
-	@FindBy(how =How.TAG_NAME, using ="h3")
-	public WebElement heading;
-	
 	public IFramPage(WebDriver driver)
 	{
 		super(driver);
@@ -24,9 +21,9 @@ public class IFramPage extends BasePage
 		PageFactory.initElements(driver,this);
 	}
 	
-	public String getHeadingOfPage()
+	public String getPageHeader()
 	{
-		return getHeading(heading);
+		return getHeading();
 	}
 	
 	//Switching to a frame
@@ -40,10 +37,12 @@ public class IFramPage extends BasePage
 	{
 		driver.switchTo().defaultContent();
 	}
+	
 	public void enterText(String text)
 	{
 		enter(textfield, text);
 	}
+	
 	public String getTextInField()
 	{
 		System.out.println(textfield.getText().toString());

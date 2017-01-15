@@ -1,6 +1,6 @@
 package com.inter.tests;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -11,39 +11,26 @@ import com.inter.pages.LoginPage;
 public class LoginTest 
 {
 	WebDriver driver;
-	public LoginPage login;
+	String exepath = "E:\\softwares\\chromedriver.exe";
 	
 	@BeforeTest
 	public void setUp()
 	{
-		System.setProperty("webdriver.gecko.driver","E:\\softwares\\geckodriver-v0.11.1-win32\\geckodriver.exe");
-		driver = new FirefoxDriver();
-		/* One thing remember is that instance of the class 
-		 * LoginPage is created in the setUp() method rather than in
-		 * the Test method 
-		*/
-		login = new LoginPage(driver);
+		System.setProperty("webdriver.chrome.driver", exepath);
+		driver = new ChromeDriver();
 	}
 	
-	@Test
-	public void loginTest()
-	{
-		login.with("tomsmith", "SuperSecretPassword!");
-		Assert.assertTrue(login.successMessagePresent(), "Success message is not displayed");
-	}
-	
-	/*
-	@Test 
-	public void loginFailTest()
-	{
-		login.with("username", "password");
-		Assert.assertTrue(login.failureMessagePresent(), "Failure message is not displayed");
-	}
-    */
 	@AfterTest
 	public void tearDown()
 	{
 		driver.close();
 	}
-
+	
+	@Test
+	public void loginTest()
+	{
+		LoginPage login = new LoginPage(driver);
+		login.with("tomsmith", "SuperSecretPassword!");
+		Assert.assertTrue(login.successMessagePresent(), "Success message is not displayed");
+	}
 }

@@ -16,12 +16,12 @@ public class LoginPage extends BasePage
 	public LoginPage(WebDriver driver)
 	{
 		super(driver);
-		visit("https://the-internet.herokuapp.com/login");
+		visit("login");
 		//assertTrue(isDisplayed(loginformLocator), "Login form is not displayed");
 	}
 	public void with(String username,String password)
 	{
-		enter(usernameLocator,username);
+		enter(usernameLocator, username);
 		enter(passwordLocator,password);
 		clickOn(loginButton);
 	}
