@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+ 
+  <test name="Login Test">
+    <classes>   
+      <class name ="com.inter.tests.LoginTest">
+       <methods>
+        <parameter name="username" value="tomsmith" />
+        <parameter name="password" value="SuperSecretPassword!" />
+          <include name="validUserLoginTest" />
+      </methods>
+      </class>
+    </classes>
+  </test> <!-- Valid User Login Test -->
+
+  <test name="InValid UserName Test">
+    <classes>   
+      <class name ="com.inter.tests.LoginTest">
+       <methods>
+        <parameter name="username" value="tom3smith" />
+        <parameter name="password" value="SuperSecretPassword!" />
+          <include name="invalidUserNameTest" />
+      </methods>
+      </class>
+    </classes>
+  </test> <!-- Invalid UserName Test -->
+  
+  <test name="Invalid Password Test">
+    <classes>   
+      <class name ="com.inter.tests.LoginTest">
+       <methods>
+        <parameter name="username" value="tomsmith" />
+        <parameter name="password" value="SperSecretPassword!" />
+          <include name="invalidPasswordTest" />
+       </methods>
+      </class>
+    </classes>
+  </test> <!-- Invalid Password Test -->
+  
+  <test name="Logout Test">
+    <classes>   
+      <class name ="com.inter.tests.LoginTest">
+       <methods>
+        <parameter name="username" value="tomsmith" />
+        <parameter name="password" value="SuperSecretPassword!" />
+          <include name="validUserLogoutTest" />
+      </methods>
+      </class>
+    </classes>
+  </test> <!--Valid User Logout Test -->
+  
+</suite> <!-- Suite -->

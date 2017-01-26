@@ -1,4 +1,5 @@
 package com.inter.pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,8 +10,6 @@ import com.inter.pages.BasePage;
 
 public class CheckboxesPage extends BasePage
 {
-	WebDriver driver;
-	
 	@FindBy(how=How.XPATH, using=".//*[@id='checkboxes']/input[1]")
 	public WebElement checkbox1;
 	
@@ -50,6 +49,7 @@ public class CheckboxesPage extends BasePage
 			checkbox2.click();
 		}
 	}
+	
 	public void deselectcheckbox(int n)
 	{
 		if(n==1)

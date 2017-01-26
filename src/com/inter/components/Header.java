@@ -12,7 +12,10 @@ public class Header
 	
 	@FindBy(how=How.TAG_NAME,using="h3")
 	public WebElement header;
-
+	
+	@FindBy(how=How.TAG_NAME,using="h2")
+	public WebElement loginPageHeader;
+	
 	public Header(WebDriver driver)
 	{
 		this.driver=driver;
@@ -21,5 +24,10 @@ public class Header
 	public WebElement getHeadingOfPage()
 	{
 		return header;
+	}
+	
+	public WebElement getHeadingOfLoginPage()
+	{
+		return loginPageHeader;
 	}
 }
