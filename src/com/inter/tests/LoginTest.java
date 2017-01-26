@@ -18,52 +18,52 @@ public class LoginTest
 	@BeforeTest
 	public void setUp()
 	{
-		System.setProperty("webdriver.chrome.driver", exepath);
-		driver = new ChromeDriver();
+	  System.setProperty("webdriver.chrome.driver", exepath);
+	  driver = new ChromeDriver();
 	}
 	
 	@AfterTest
 	public void tearDown()
 	{
-		driver.close();
+	 driver.close();
 	}
 
 	@Parameters({"username","password"})
 	@Test
 	public void validUserLoginTest(String username, String password)
 	{
-	    LoginPage login = new LoginPage(driver);
-	    login.loginWith(username, password);
-	    System.out.println("Login SuccessFul");
-	    Assert.assertTrue(login.getSuccessMessage().contains("secure area"));  
+	   LoginPage login = new LoginPage(driver);
+	   login.loginWith(username, password);
+	   System.out.println("Login SuccessFul");
+	   Assert.assertTrue(login.getSuccessMessage().contains("secure area"));  
 	}
 	
 	@Parameters({"username","password"})
 	@Test
 	public void invalidUserNameTest(String username,String password)
 	{
-	    LoginPage login = new LoginPage(driver);
-		login.loginWith(username,password);
-		Assert.assertTrue(login.getFailureMessage().contains("username"));
+	   LoginPage login = new LoginPage(driver);
+	   login.loginWith(username,password);
+	   Assert.assertTrue(login.getFailureMessage().contains("username"));
 	}
 	  
 	@Parameters({"username","password"})
 	@Test
 	public void invalidPasswordTest(String username,String password)
 	{
-		LoginPage login = new LoginPage(driver);
-		login.loginWith(username ,password);
-		Assert.assertTrue(login.getFailureMessage().contains("password"));	
+	  LoginPage login = new LoginPage(driver);
+          login.loginWith(username ,password);
+	  Assert.assertTrue(login.getFailureMessage().contains("password"));	
 	}
 
 	@Parameters({"username","password"})
 	@Test
 	public void validUserLogoutTest(String username, String password)
 	{
-		LoginPage login = new LoginPage(driver);
-		login.loginWith(username,password);
-		login.logout();
-		System.out.println("Logout Successful");
-		Assert.assertTrue(login.getLoginPageHeader().equals("Login Page"));
+	  LoginPage login = new LoginPage(driver);
+	  login.loginWith(username,password);
+	  login.logout();
+	  System.out.println("Logout Successful");
+	  Assert.assertTrue(login.getLoginPageHeader().equals("Login Page"));
 	}
 }
