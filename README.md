@@ -8,5 +8,3 @@ Implementing Page Object Model with Page Factory pattern for writing tests again
 /tests: consists of tests written against the page objects.
 
 /components: consists of componets that are present on every page of the website, eg: header, footer etc.
-
-Tools used: Java, Selenium WebDriver, TestNG
