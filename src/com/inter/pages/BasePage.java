@@ -28,6 +28,10 @@ public class BasePage
 		driver.get(BASE_URL+url);
 	}
 	
+	public String getURL()
+	{
+		return driver.getCurrentUrl().toString();
+	}
 	public void clickOn(WebElement ele)
 	{
 		ele.click();

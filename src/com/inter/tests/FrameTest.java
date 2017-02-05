@@ -2,33 +2,13 @@ package com.inter.tests;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.inter.pages.IFramPage;
 
-public class FrameTest 
+public class FrameTest extends BaseTest
 {
-	WebDriver driver;
-	String exepath = "E:\\softwares\\chromedriver.exe";
-	
-	@BeforeTest
-	public void setUp()
-	{
-		System.setProperty("webdriver.chrome.driver", exepath);
-		driver = new ChromeDriver();
-	}
-
-	@AfterTest
-	public void tearDown()
-	{
-		driver.close();
-	}
-
 	@Test(priority = 0)
 	public void HeadingTest()
 	{
@@ -39,7 +19,7 @@ public class FrameTest
 		Assert.assertEquals(heading, "An iFrame containing the TinyMCE WYSIWYG Editor");
 	}
 	
-	@Test(dependsOnMethods="HeadingTest")
+	@Test(dependsOnMethods={"HeadingTest"})
 	public void TextInFieldTest()
 	{
 		IFramPage iframePage = new IFramPage(driver);
@@ -50,7 +30,7 @@ public class FrameTest
 		Assert.assertEquals(textInField, "Hello World");
 	}
 	
-	@Test(dependsOnMethods="TextInFieldTest")
+	@Test(dependsOnMethods={"TextInFieldTest"})
 	public void DefaultContentTest()
 	{
 		IFramPage iframePage = new IFramPage(driver);

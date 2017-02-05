@@ -4,8 +4,6 @@
   <test name="Test">
     <classes>
       <class name ="com.inter.tests.FrameTest"/>
-      <class name ="com.inter.tests.CheckboxesTest"/>
-      <class name="com.inter.tests.DropDownTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

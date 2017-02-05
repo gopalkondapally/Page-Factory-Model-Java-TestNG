@@ -2,33 +2,13 @@ package com.inter.tests;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.inter.pages.CheckboxesPage;
 
-public class CheckboxesTest 
+public class CheckboxesTest extends BaseTest
 {
-	WebDriver driver;
-	String exepath = "E:\\softwares\\chromedriver.exe";
-	
-	@BeforeTest
-	public void setUp()
-	{
-		System.setProperty("webdriver.chrome.driver", exepath);
-		driver = new ChromeDriver();
-	}
-	
-	@AfterTest
-	public void tearDown()
-	{
-		driver.close();
-	}
-	
 	@Test(priority = 0)
 	public void HeadingTest()
 	{

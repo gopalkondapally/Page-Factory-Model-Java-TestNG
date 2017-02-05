@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test name="All Tests">
+    <classes>
+      <class name="com.inter.tests.FrameTest" />
+      <class name="com.inter.tests.CheckboxesTest" /> 
+      <class name="com.inter.tests.DropDownTest"/>
+      <class name="com.inter.tests.InternetTest"/>
+      <class name="com.inter.tests.LoginTest"/>
+    </classes>
+    
+  </test> <!-- Valid User Login Test -->
+</suite> <!-- Suite -->

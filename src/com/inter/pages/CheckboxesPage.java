@@ -1,5 +1,7 @@
 package com.inter.pages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +21,10 @@ public class CheckboxesPage extends BasePage
 	public CheckboxesPage(WebDriver driver)
 	{
 		super(driver);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		System.out.println("Driver launched");
 		visit("checkboxes");
+		System.out.println("Navigated to Checkboxes page");
 		PageFactory.initElements(driver,this);
 	}
 	
