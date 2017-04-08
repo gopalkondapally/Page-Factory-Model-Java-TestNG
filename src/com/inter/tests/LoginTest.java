@@ -5,42 +5,45 @@ import org.testng.annotations.Test;
 import org.testng.Assert;
 
 import com.inter.pages.LoginPage;
+import com.inter.pages.SecurePage;
 import com.inter.resources.TestDataProvider;
 
 public class LoginTest extends BaseTest
 {
+	
 	@Test(dataProvider="TestData", dataProviderClass=TestDataProvider.class)
 	public void validUserLoginTest(String username, String password)
 	{
 	  LoginPage login = new LoginPage(driver);
-	  login.loginWith(username, password);
+	  SecurePage secure = login.loginWithValidCredentials(username, password);
 	  System.out.println("Login SuccessFul");
-	  Assert.assertTrue(login.getSuccessMessage().contains("secure area"),"Login Not Successful");
+	  Assert.assertTrue(secure.getSuccessMessage().contains("secure area"),"Login Not Successful");
 	}
 	
 	@Test(dataProvider="TestData", dataProviderClass=TestDataProvider.class)
 	public void invalidUserNameTest(String username,String password)
 	{
 	  LoginPage login = new LoginPage(driver);
-      login.loginWith(username,password);
-      Assert.assertTrue(login.getFailureMessage().contains("username"),"Valid Username is provided");
+      login.loginWithInValidCredentials(username,password);
+      Assert.assertTrue(login.getFailureMessage().contains("username"),"Invalid Username is provided");
 	}
 	  
 	@Test(dataProvider="TestData", dataProviderClass=TestDataProvider.class)
 	public void invalidPasswordTest(String username,String password)
 	{
 	  LoginPage login = new LoginPage(driver);
-	  login.loginWith(username ,password);
-	  Assert.assertTrue(login.getFailureMessage().contains("password"),"Valid Password is provided");
+	  login.loginWithInValidCredentials(username ,password);
+	  Assert.assertTrue(login.getFailureMessage().contains("password"),"Invalid Password is provided");
 	}
 
 	@Test(dataProvider="TestData", dataProviderClass=TestDataProvider.class)
 	public void validUserLogoutTest(String username, String password)
 	{
 	  LoginPage login = new LoginPage(driver);
-	  login.loginWith(username,password);
-	  login.logout();
+	  SecurePage secure = login.loginWithValidCredentials(username,password);
+	  Assert.assertTrue(secure.isLogOutDisplayed());
+	  LoginPage afterLogout= secure.logout();
 	  System.out.println("Logout Successful");
-	  Assert.assertTrue(login.getLoginPageHeader().equals("Login Page"),"Logout Not Successful");
+	  Assert.assertTrue(afterLogout.getLoginPageHeader().equals("Login Page"),"Logout Not Successful");
 	}
 }
