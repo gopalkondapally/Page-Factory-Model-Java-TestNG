@@ -9,19 +9,19 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends BasePage
 {
 	@FindBy(how=How.ID, using="login")
-	public WebElement loginformLocator;
+	public WebElement loginform;
 	
 	@FindBy(how=How.ID, using="username")
-	public WebElement usernameLocator;
+	public WebElement usernameField;
 	
 	@FindBy(how=How.ID, using="password")
-	public WebElement passwordLocator;
+	public WebElement passwordField;
 	
 	@FindBy(how=How.CLASS_NAME, using="radius")
 	public WebElement loginButton;
 	
 	@FindBy(how=How.CSS, using=".error")
-	public WebElement failureMessageLocator;
+	public WebElement failureMessage;
 		
 	public LoginPage(WebDriver driver)
 	{
@@ -44,8 +44,8 @@ public class LoginPage extends BasePage
 	
 	public void loginWith(String username,String password)
 	{
-		enter(usernameLocator, username);
-		enter(passwordLocator,password);
+		enter(usernameField, username);
+		enter(passwordField,password);
 		clickOn(loginButton);
 	}
 	
@@ -54,13 +54,18 @@ public class LoginPage extends BasePage
 		return getLoginPageHeading();
 	}
 	
-	public boolean failureMessagePresent()
+	public boolean isFailureMessageDisplayed()
 	{
-		return isDisplayed(failureMessageLocator);
+		return ifDisplayed(failureMessage);
 	}
 	
 	public String getFailureMessage()
 	{
-		return getText(failureMessageLocator);
+		if(isFailureMessageDisplayed()) {
+			return getText(failureMessage);
+		}
+		else {
+			return null;
+		}
 	}
 }

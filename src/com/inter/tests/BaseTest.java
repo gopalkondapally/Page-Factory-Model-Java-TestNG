@@ -9,19 +9,17 @@ import com.inter.resources.DriverManager;
 public class BaseTest 
 {
 	public WebDriver driver;
-	String exepath = "E:\\softwares\\chromedriver.exe";
 	DriverManager driverManager = new DriverManager();
-	
-	
+
 	@BeforeMethod
 	public void setUp()
 	{
-		driver = driverManager.openBrowser("chrome");
+		driver = driverManager.openBrowser("firefox");
 	}
 	
 	@AfterMethod
 	public void tearDown()
 	{
-	  //driver.close();
+	  driver.close();
 	}
 }

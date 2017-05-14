@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverManager 
 {
 	WebDriver driver=null;
-	final static String GECKO_DRIVER_PATH ="E:\\softwares\\geckodriver-v0.11.1-win32\\geckodriver.exe";
+	final static String GECKO_DRIVER_PATH ="E:\\softwares\\geckodriver-0.16.1\\geckodriver.exe";
 	final static String CHROME_DRIVER_PATH="E:\\softwares\\chromedriver.exe";
 	
 	public WebDriver openBrowser(String browserName) 
@@ -38,5 +38,4 @@ public class DriverManager
         }
         return driver;
     }
-	
 }

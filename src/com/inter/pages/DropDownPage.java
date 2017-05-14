@@ -31,11 +31,6 @@ public class DropDownPage extends BasePage
 		return new Select(dropdownList);
 	}
 	
-	public String getPagerHeader() 
-	{
-		return getHeading();
-	}
-	
 	public void selectOptionByValue(int value)
 	{
 		getSelectOptions().selectByIndex(value);

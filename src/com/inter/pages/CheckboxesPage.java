@@ -24,7 +24,6 @@ public class CheckboxesPage extends BasePage
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		System.out.println("Driver launched");
 		visit("checkboxes");
-		System.out.println("Navigated to Checkboxes page");
 		PageFactory.initElements(driver,this);
 	}
 	

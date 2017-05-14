@@ -24,8 +24,8 @@ public class LoginTest extends BaseTest
 	public void invalidUserNameTest(String username,String password)
 	{
 	  LoginPage login = new LoginPage(driver);
-      login.loginWithInValidCredentials(username,password);
-      Assert.assertTrue(login.getFailureMessage().contains("username"),"Invalid Username is provided");
+	  login.loginWithInValidCredentials(username,password);
+	  Assert.assertTrue(login.getFailureMessage().contains("username"),"Invalid Username is provided");
 	}
 	  
 	@Test(dataProvider="TestData", dataProviderClass=TestDataProvider.class)
